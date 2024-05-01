@@ -315,4 +315,13 @@ class AmqpContext implements InteropAmqpContext, DelayStrategyAware
 
         return $message;
     }
+    
+    /*
+        Create Channel by define null after reconnect
+    */
+    public function reconnect(){
+        $this->connection->reconnect();
+        $io = $this->connection->getIO();
+        $this->channel = null;
+    }
 }
